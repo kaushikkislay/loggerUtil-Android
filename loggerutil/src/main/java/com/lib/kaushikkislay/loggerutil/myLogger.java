@@ -23,7 +23,7 @@ public class myLogger extends IntentService implements SensorEventListener {
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      *
-     * @param name Used to name the worker thread, important only for debugging.
+     *  name the worker thread, important only for debugging.
      */
     public myLogger() {
         super("Worker thread");
