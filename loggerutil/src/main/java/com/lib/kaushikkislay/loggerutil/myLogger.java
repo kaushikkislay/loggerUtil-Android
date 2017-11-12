@@ -43,7 +43,7 @@ public class myLogger extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
 
         synchronized (this){
-            for (int i=0;1<10;i++){
+            for (int i=0;i<20;i++){
                 Log.d("TAG", Integer.toString(i));
                 try {
                     Thread.sleep(1000);
