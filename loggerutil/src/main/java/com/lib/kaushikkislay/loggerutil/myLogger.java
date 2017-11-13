@@ -37,7 +37,8 @@ public class myLogger extends IntentService implements SensorEventListener {
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
         sn= SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         SM.registerListener(this, sn, SensorManager.SENSOR_DELAY_NORMAL);
-        return super.onStartCommand(intent, flags, startId);
+        //return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class myLogger extends IntentService implements SensorEventListener {
 
         synchronized (this){
 
-            for (int i=0;i<1;i++){
+            for (int i=0;i<20;i++){
                 Log.d("TAG", Integer.toString(i));
                 try {
                     Thread.sleep(1000);
