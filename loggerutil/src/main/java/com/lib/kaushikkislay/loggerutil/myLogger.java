@@ -19,7 +19,7 @@ public class myLogger extends IntentService implements SensorEventListener {
 
     private SensorManager SM;
     private Sensor sn;
-    private SensorEvent se;
+    private SensorEvent se = null;
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
@@ -57,9 +57,11 @@ public class myLogger extends IntentService implements SensorEventListener {
 
             for (int i=0;i<20;i++){
                 Log.d("TAG", Integer.toString(i));
+                if (se !=null){
                 Log.d("TAG X: ", String.valueOf(se.values[0]));
                 Log.d("TAG Y: ", String.valueOf(se.values[1]));
                 Log.d("TAG Z: ", String.valueOf(se.values[2]));
+                } 
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
