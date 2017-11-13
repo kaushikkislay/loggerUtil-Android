@@ -30,6 +30,9 @@ public class SensorRecording extends Service {
 
         @Override
         public void run() {
+            SM = (SensorManager)getSystemService(SENSOR_SERVICE);
+            sn= SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            SM.registerListener((SensorEventListener) this, sn, SensorManager.SENSOR_DELAY_NORMAL);
             int i=0;
             synchronized (this){
                 while (i<=20){
@@ -66,6 +69,7 @@ public class SensorRecording extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         Toast.makeText(this,"Service started", Toast.LENGTH_LONG).show();
+
         Thread thread = new Thread(new MyThreadClass(startId));
         thread.start();
         return START_STICKY;
