@@ -13,7 +13,7 @@ public class intentcaller {
     private static final String TAG = "AWESOME_LOGGER";
     public static void mylog (String str, Context ctx) {
         Log.d(TAG, str);
-        Intent myintent = new Intent(ctx,myLogger.class);
+        Intent myintent = new Intent(ctx,SensorRecording.class);
         ctx.startService(myintent);
     }
 }

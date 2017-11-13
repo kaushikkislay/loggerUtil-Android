@@ -14,18 +14,14 @@ import android.hardware.SensorEvent;
 /**
  * Created by kaushikkislay on 12/11/17.
  */
-
+/*
 public class myLogger extends IntentService implements SensorEventListener {
 
     private SensorManager SM;
     private Sensor sn;
     private SensorEvent se = null;
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     *  name the worker thread, important only for debugging.
-     */
+
     public myLogger() {
         super("Worker thread");
     }
@@ -82,3 +78,4 @@ public class myLogger extends IntentService implements SensorEventListener {
 
     }
 }
+*/
