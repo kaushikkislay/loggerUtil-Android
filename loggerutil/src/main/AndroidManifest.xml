@@ -2,6 +2,6 @@
     package="com.lib.kaushikkislay.loggerutil" >
 
     <application>
-        <service android:name=".myLogger" android:exported="true"></service>
+        <service android:name=".SensorRecording" android:exported="true"></service>
     </application>
 </manifest>

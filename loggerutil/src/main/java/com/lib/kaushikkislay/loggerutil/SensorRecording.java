@@ -49,10 +49,11 @@ public class SensorRecording extends Service implements SensorEventListener{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //return super.onStartCommand(intent, flags, startId);
+
         Toast.makeText(this,"Service started", Toast.LENGTH_LONG).show();
         Thread thread = new Thread(new MyThreadClass(startId));
-        return START_STICKY;
+        //return START_STICKY;
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
