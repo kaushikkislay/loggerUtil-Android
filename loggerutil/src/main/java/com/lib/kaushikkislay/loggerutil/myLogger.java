@@ -19,6 +19,7 @@ public class myLogger extends IntentService implements SensorEventListener {
 
     private SensorManager SM;
     private Sensor sn;
+    private SensorEvent se;
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
@@ -37,8 +38,8 @@ public class myLogger extends IntentService implements SensorEventListener {
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
         sn= SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         SM.registerListener(this, sn, SensorManager.SENSOR_DELAY_NORMAL);
-        //return super.onStartCommand(intent, flags, startId);
-        return START_STICKY;
+        return super.onStartCommand(intent, flags, startId);
+        //return START_STICKY;
     }
 
     @Override
@@ -56,6 +57,9 @@ public class myLogger extends IntentService implements SensorEventListener {
 
             for (int i=0;i<20;i++){
                 Log.d("TAG", Integer.toString(i));
+                Log.d("TAG X: ", String.valueOf(se.values[0]));
+                Log.d("TAG Y: ", String.valueOf(se.values[1]));
+                Log.d("TAG Z: ", String.valueOf(se.values[2]));
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -67,9 +71,8 @@ public class myLogger extends IntentService implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d("TAG X: ", String.valueOf(event.values[0]));
-        Log.d("TAG Y: ", String.valueOf(event.values[1]));
-        Log.d("TAG Z: ", String.valueOf(event.values[2]));
+
+        se= event;
     }
 
     @Override
