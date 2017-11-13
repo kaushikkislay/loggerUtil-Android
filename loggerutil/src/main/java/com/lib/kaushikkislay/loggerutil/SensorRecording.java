@@ -52,8 +52,9 @@ public class SensorRecording extends Service implements SensorEventListener{
 
         Toast.makeText(this,"Service started", Toast.LENGTH_LONG).show();
         Thread thread = new Thread(new MyThreadClass(startId));
-        //return START_STICKY;
-        return super.onStartCommand(intent, flags, startId);
+        thread.start();
+        return START_STICKY;
+        //return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
