@@ -15,13 +15,13 @@ import android.widget.Toast;
  * Created by kaushikkislay on 13/11/17.
  */
 
-public class SensorRecording extends Service implements SensorEventListener{
+public class SensorRecording extends Service {
 
     private SensorManager SM;
     private Sensor sn;
     private SensorEvent se = null;
 
-    final class MyThreadClass implements Runnable{
+    final class MyThreadClass implements Runnable, SensorEventListener{
 
         int service_id;
         MyThreadClass(int _service_id){
@@ -34,8 +34,13 @@ public class SensorRecording extends Service implements SensorEventListener{
             synchronized (this){
                 while (i<=20){
                     Log.d("TAG", Integer.toString(i));
+                    if (se !=null){
+                        Log.d("TAG X: ", String.valueOf(se.values[0]));
+                        Log.d("TAG Y: ", String.valueOf(se.values[1]));
+                        Log.d("TAG Z: ", String.valueOf(se.values[2]));
+                    }
                     try {
-                        wait(1500);
+                        wait(1000);
                         i++;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -44,6 +49,16 @@ public class SensorRecording extends Service implements SensorEventListener{
                 }
                 stopSelf(service_id);
             }
+        }
+
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            se= event;
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
         }
     }
 
@@ -73,13 +88,5 @@ public class SensorRecording extends Service implements SensorEventListener{
         return null;
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
 
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
 }
